@@ -1,3 +1,8 @@
+# uses pound signs for comments, and you can write whatever here
+# I'm going to have git ignore temporary Office files
+~$*.doc*
+~$*.ppt*
+
 # History files
 .Rhistory
 .Rapp.history
