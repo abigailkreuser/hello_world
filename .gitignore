@@ -2,6 +2,8 @@
 # I'm going to have git ignore temporary Office files
 ~$*.doc*
 ~$*.ppt*
+~$*.xls* 
+
 
 # History files
 .Rhistory
