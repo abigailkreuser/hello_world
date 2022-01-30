@@ -1,0 +1,247 @@
+---
+title: "repro_research_markdown"
+author: "Abigail Kreuser"
+date: "1/25/2022"
+output: html_document
+---
+
+## Things coming up
+
+clone hw repo- start HW
+project proposals - want to have that to be ready
+
+#### Notes:
+
+Doesn't use equal signs because cs bad practice 
+
+
+example: 
+``` {r}
+y = 2
+
+#versus
+
+x <- 5
+
+
+```
+
+
+R is a language with alot of ()
+
+```{r, echo=TRUE, eval=FALSE}
+#was saying something about rendering 
+rmarkdown::render('yourFile.Rmd')
+
+#lexicalscoping so that you are selecting a certain packages function
+
+```
+
+
+See comments above about lexical scoping, I have no idea how to spell that
+
+if you load a package R uses the most recently loaded packages function word 
+not the base one. 
+
+data sets that come preloaded 
+
+
+# I MISSED THE CODE WHERE YOU PRINT OUT ATTACHCED PACKAGES 
+
+when thinking about reproducibility, try to minimize the number of attached packages you are working on because future updates and things could. 
+
+tips: teach by typing, exercises are very helpful cementing the fxns and things learned 
+
+```{r}
+num <- c(1,2,3,4)
+char <- LETTERS[1:4]
+fact <- as.factor(c('a','a','b','d'))
+logc <- c(TRUE, FALSE, TRUE, TRUE)
+
+# concatenate - creates the vector 
+#numeric, character, then there is factor - asigns a numeric value to the variable
+
+fact
+#gives levels 
+
+#logical also is called boolean
+# treats as numeric 0/1s, good for indexing things -- what is indexing
+logc + 0
+
+
+seq(1,4, by = 1)
+#seq is a very useful ... just need ot learn how to use it
+
+
+is.numeric(num)
+#bool response 
+
+str(num)
+#str is structure 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+vectors are useful - but doesnt allowed mixed types?
+
+```{r}
+data(mtcars)
+
+head(mtcars)
+#it has no name for the type of car 
+
+colnames(mtcars)
+rownames(mtcars)
+
+typeof(mtcars)
+str(mtcars)
+```
+
+So R loaded it as a list, and structure is data.frame
+
+could be a matrix because it is all the same type - numeric 
+
+this matrix is 2D could be more 
+
+wee havent discussed lists yet. we will when we talk about APIs for sure. 
+
+data.frames are cool because they are basically lists, and thats nice for indexing 
+
+```{r}
+
+mtcarsM <- as.matrix(mtcars)
+typeof(mtcarsM)
+str(mtcarsM)
+
+
+# the structure fxn gives more insight when mtcars is a data frame
+#rownames are sticky when coding more... tbd
+
+```
+
+Now for a short break...
+100 rows, 5 columnns 
+
+``` {r}
+
+try3 <- matrix(1:100, nrow = 100, ncol = 5)
+try3
+
+oops <- matrix(rows, nrow = 100, ncol = 5)
+oops
+
+
+rows = c(1:100)
+
+col = as.list(1:5)
+print(col)
+
+test1 <- matrix(col, rows)
+head(test1)
+rows
+?col
+
+test2 <- col(rows)
+
+```
+
+
+
+```{r}
+testList <- list(a=1:100, b=c('A', 'B'), d=oops)
+str(testList)
+
+#indexing
+num[1]
+
+testList[1]
+
+testList[1]+5 # no work
+testList[[1]]+5
+typeof(testList[1])
+newlist <-testList[1:2]
+newlist
+
+mtcars$cyl
+mtcars[['cyl']]
+
+
+```
+
+# Review notes 
+
+class vs typeof vs str give all different insights
+
+```{r}
+
+#remove things from matrix using [-1,]
+# ways to look at the end of data not in hard code 
+
+
+nrow(oops)
+
+tail(oops, 1)
+
+oops[nrow(oops),]
+
+test2 = rbind(oops, oops) #row bind
+cbind(oops, oops) #binding by columns
+
+testDF <- as.data.frame(test2)
+
+oops[30,4]
+str(testDF)
+testDF$V4[30]
+
+
+
+
+```
+if{all,(is.na(test[,1]))} 
+or 
+if{any(is.na(test[,1]))}
+
+im lost... !
+
+Conditionals 
+```{r}
+
+
+unique(test[,2])
+
+brody <- 'cat'
+brody == 'cat'
+brody != 'cat'
+brody == 'dog'
+
+#index all of the rows in the matrix whose first column value 2 
+test = matrix(runif(500), ncol=5)
+# remove rows whose first colum is less than .5
+
+
+point5 <- test[,1]> 0.5 
+a <- test[test[,1]> 0.5, ] 
+b <- test[point5,]
+dim(b)
+sum(point5)
+a == b
+all(a == b)
+
+which(point5)
+
+# A VERY POWERFULL TOOL %in%
+
+```
