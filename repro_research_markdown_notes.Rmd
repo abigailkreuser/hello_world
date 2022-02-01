@@ -217,6 +217,11 @@ if{any(is.na(test[,1]))}
 im lost... !
 
 Conditionals 
+
+2022-02-01
+Picking up here 
+
+
 ```{r}
 
 
@@ -227,6 +232,21 @@ brody == 'cat'
 brody != 'cat'
 brody == 'dog'
 
+
+animals <- c('dog', 'cat', 'rhino', NA )
+
+brody == animals
+
+
+sum(na.omit(c(1:10,NA)))
+
+# can use na.rm= TRUE
+# or na.omit
+
+
+
+###########################  
+#Uh move this
 #index all of the rows in the matrix whose first column value 2 
 test = matrix(runif(500), ncol=5)
 # remove rows whose first colum is less than .5
@@ -243,5 +263,100 @@ all(a == b)
 which(point5)
 
 # A VERY POWERFULL TOOL %in%
+
+```
+
+NA values are different then NULL values. 
+there can only be 1 NULL and it can be weird and throw or not throw errors
+
+
+``` {r}
+
+is.na(animals)
+
+is.null(animals)
+
+c(NULL, NULL, NULL) + 1
+Inf-Inf #NaN is not a number 
+
+all(brody == animals)
+any(brody == animals)
+brody %in% animals
+
+which(brody == animals)
+# this gives you the index number and then can use that if needed 
+
+
+```
+
+if (condition){
+(action)
+}else{
+(other action)
+}
+  
+```{r}
+if (any(brody == animals)){
+  print('brody is an animal')
+}
+
+
+if (any(brody == animals)){
+  print('brody is an animal')
+}else{
+  print("brody is not an animal")
+}
+
+
+
+
+
+```
+  If else gives a binary example, but could need a string of ifs and nested ifs and Future examples 
+  
+```{r}
+  
+#LOOK AT THE YOUTUBES 
+
+mean(unlist(arizona2[,12:ncol(arizona2)]))
+```
+
+
+LOOPS
+
+loops are helpful not silly 
+only silly if you nest like 3 loops 
+
+for every i where i = a vector or numeric index of my vegtables 
+
+```{r}
+
+a <- 1:10
+b <- 10:1
+
+# vectorized version 
+d <- a + b 
+#answer is 10 11's
+d <- c()
+for(i in 1:length(a)){
+  d[i] <- a[i] + b[i]
+}
+
+# break this down by running 
+i = 1
+i = 2
+i = 5 
+
+# this will assign 11s to the 1, 2, 5th position in d, and leave the others as NA
+
+
+testList2 <- list(a=runif(100), b=runif(5), d=runif(1000))
+
+out <- c()
+
+
+#length a because were going as long as length a 
+
+
 
 ```
