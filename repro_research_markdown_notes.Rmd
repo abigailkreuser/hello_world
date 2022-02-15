@@ -356,7 +356,103 @@ out <- c()
 
 
 #length a because were going as long as length a 
+```
+
+
+
+
+
+2022-03-2022
+Review loops
+Picking up with apply statements
+
+
+sapply() # simplify apply - will output the lowest thing like a vector- must be one number 
+#dfs are lists so you can use sapply on dataframes 
+apply() 
+lapply() # lists, outputs a list output
+
+cannot hand apply matricies 
+
+
+```{r}
+out <- sapply(testList2, FUN= mean) # what took 4 lines with for takes 1 now
+out
+
+lout <- lapply(testList2, FUN = mean)
+
+
+apply() # not for lists, because lists have NULL dim
+
+apply(X=mat, MARGIN=1, FUN=sd)
+apply(mat, 1, sd)
+
+
+
+
+mat <- matrix(runif(200), nrow = 10, ncol = 20)
+dim(mat)
+
+
+getMnsd <- function(x){
+  if (!is.numeric(x)){
+    stop('silly, you need a number here') #warning or stop for error
+  }
+  if(is.numeric(x)){
+    tmp <- c(mean(x), sd(x))
+    return(tmp)
+  }
+}
+# objects defined in a fxn are not in the gobal environment
+# 
+apply(mat, 1, FUN=getMnsd )
+
+#using the func=mean makes it the default 
+getLfunc <- function(last, func=mean){
+  sapply(lst, FUN = func)
+}
+
+
+# idk if that is right ^^^
+```
+
+
+
+How to document your function
+
+```{r}
+#' title of function 
+#' 
+#' this is the format language for writing abot a function
+#' @param is a parameter to my funtion 
+#' @param lst is list object 
+#' @param func
+#' 
+#' @returns a vector
+#' @examples
+#'getLfunc(list)
+
+
+```
+
+
+Explore the link that he skiped 
+In class practice problems
+
+
+```{r}
+
+
+dat <- read.csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv")
+
+# smallest lat to be the top rows
+
+dat_lat_order <- order(dat$Lat, decreasing = FALSE)
+
+head(dat_lat_order)
+dat$lat
 
 
 
 ```
+

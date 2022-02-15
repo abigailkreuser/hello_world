@@ -35,3 +35,65 @@ title # add annotations to x, y, axis labels title, subtitle, outer margin
 mtext #add arbitrary text to margins inner or outer 
 axis #adding axis ticks or labels
 
+# 2022-02-08
+# in class were learning base R visualizations 
+
+# covid data
+
+dat <- read.csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv")
+head(dat)
+
+#having issues connecting to the server tried to look for previous data files but could not find
+
+plot(1:10)
+par(mar=c(4, 4, 0.5, 0.5))
+plot(1:10)
+
+pdf('plot.pdf', height=4, width=4) # since its a vecotr grraphic it doesn't become pixelated when you zoom in 
+numPups <-1:20
+app <-runif(20)
+par(mar=c(4, 4, 1, 1), mfrow = c(1,2))
+plot(numPups, app,
+     xlab='number of puppies',
+     ylab='sanity',
+     pch=16, # tad always uses pch= 16, filled in circle
+     col=adjustcolor('#73000A', 0.5), # color can look up hex codes on google and then call by number 
+     cex=runif(20, 1, 5), #size
+     cex.lab=2, # label size
+     las=1, # changes y labels to be oriented up and down
+     main='') #title
+    title("happy dogs", line = -1) # can have more control over title
+    legend('topleft', legend = 'a', bty='n', cex=2)
+    text(0, 1, 'a')
+    points(1:5, runif(5), pch=16,
+           col='orange')
+mod <- lm(app~ numPups)
+abline(mod)    
+
+   histogram <- hist(rpois(1000,4),
+         xlab="poisson values",
+         ylab='', las=1, breaks=100,
+         col='pink',
+         main='',cex.lab=1.25,
+         text(0,200,'b'))    
+    
+    dev.off()
+    
+#savinng as a pdf doesnt save it side by side 
+    
+    
+histogram[1[1]]
+    
+#tad always uses pch= 16, filled in circle
+    
+    
+    
+
+
+
+
+other major plot fxns 
+hist() - histogram
+image() - heatmap
+boxplot()
+barplot()
